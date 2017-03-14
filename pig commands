@@ -1,0 +1,38 @@
+Ans-
+ The working of following pig script commands are discussed below-
+
+LOAD-
+it is used to load the data from the file system (local/HDFS) into a relation.
+b = load '/hadoopdata/pig/B.txt' using PigStorage(',') as (b1:int, b2:int, b3:int);
+
+STORE-
+It is used to save a relation to the file system (local/HDFS).
+STORE 2 INTO '/pigoutput';
+
+DUMP-
+It is used to print the contents of a relation on the console.
+Dump b ;
+
+FOREACH-
+It is used to  generate data transformations based on columns of data.
+2 = FOREACH c GENERATE b1, b2, b2*b3;
+
+FILTER-
+It is used to remove unwanted rows from a relation.
+f = FILTER c by $2 > 2;
+
+GROUP BY- 
+It is used to group the data in a single relation.
+g = GROUP c by $1;
+
+g = GROUP c by ($1,$2); 
+
+h = GROUP c ALL;
+
+ORDER BY- 
+It is used to arrange a relation in a sorted order based on one or more fields (ascending or descending).
+f = order c by b1 desc ;
+
+ DESCRIBE-
+it is used to describe the schema of a relation.
+describe f;
